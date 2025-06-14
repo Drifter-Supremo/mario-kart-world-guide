@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Kart World - Interactive Unlock & Strategy Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">Mario Kart World</h1>
+                <p class="subtitle">Interactive Unlock & Strategy Guide</p>
+                <div class="search-container">
+                    <input type="text" id="globalSearch" placeholder="Search for characters, karts, or items..." class="search-input">
+                    <button class="search-btn">🔍</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="unlocks">Unlock Road-Map</button>
+            <button class="tab-btn" data-tab="grand-prix">Grand Prix</button>
+            <button class="tab-btn" data-tab="knockout-tour">Knockout Tour</button>
+            <button class="tab-btn" data-tab="battle">Battle</button>
+            <button class="tab-btn" data-tab="free-roam">Free Roam</button>
+        </nav>
+
+        <!-- Sidebar Filter -->
+        <aside class="sidebar">
+            <h3>Quick Filters</h3>
+            <div class="filter-section">
+                <h4>Characters</h4>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="mario"> Mario</label>
+                    <label><input type="checkbox" value="luigi"> Luigi</label>
+                    <label><input type="checkbox" value="peach"> Peach</label>
+                    <label><input type="checkbox" value="bowser"> Bowser</label>
+                    <label><input type="checkbox" value="yoshi"> Yoshi</label>
+                    <label><input type="checkbox" value="toad"> Toad</label>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h4>Rarity</h4>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="common"> Common</label>
+                    <label><input type="checkbox" value="special"> Special</label>
+                    <label><input type="checkbox" value="legendary"> Legendary</label>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h4>Game Mode</h4>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="grand-prix"> Grand Prix</label>
+                    <label><input type="checkbox" value="knockout-tour"> Knockout Tour</label>
+                    <label><input type="checkbox" value="battle"> Battle</label>
+                    <label><input type="checkbox" value="free-roam"> Free Roam</label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active">
+                <div class="overview-dashboard">
+                    <h2>Welcome to Mario Kart World!</h2>
+                    <p>Your complete guide to unlocking every character, kart, and mastering all game modes.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>50</h3>
+                            <p>Characters</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>40</h3>
+                            <p>Karts</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>4</h3>
+                            <p>Game Modes</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>30</h3>
+                            <p>Tracks</p>
+                        </div>
+                    </div>
+
+                    <div class="mode-buttons">
+                        <button class="mode-btn" data-target="unlocks">
+                            <span class="mode-icon">🗺️</span>
+                            <span class="mode-title">Unlock Road-Map</span>
+                            <span class="mode-desc">See all unlock requirements</span>
+                        </button>
+                        <button class="mode-btn" data-target="grand-prix">
+                            <span class="mode-icon">🏆</span>
+                            <span class="mode-title">Grand Prix</span>
+                            <span class="mode-desc">Best loadouts for each CC</span>
+                        </button>
+                        <button class="mode-btn" data-target="knockout-tour">
+                            <span class="mode-icon">⚡</span>
+                            <span class="mode-title">Knockout Tour</span>
+                            <span class="mode-desc">Survival racing strategies</span>
+                        </button>
+                        <button class="mode-btn" data-target="battle">
+                            <span class="mode-icon">💥</span>
+                            <span class="mode-title">Battle</span>
+                            <span class="mode-desc">Arena combat tips</span>
+                        </button>
+                        <button class="mode-btn" data-target="free-roam">
+                            <span class="mode-icon">🌍</span>
+                            <span class="mode-title">Free Roam</span>
+                            <span class="mode-desc">Collectibles & missions</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unlock Road-Map Tab -->
+            <div id="unlocks" class="tab-content">
+                <h2>Unlock Road-Map</h2>
+                <p>Track your progress through all unlockable content in chronological order.</p>
+                
+                <div class="unlock-table-container">
+                    <table class="unlock-table">
+                        <thead>
+                            <tr>
+                                <th>✓</th>
+                                <th>Requirement</th>
+                                <th>Mode</th>
+                                <th>Difficulty</th>
+                                <th>Reward(s)</th>
+                                <th>Rarity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="unlockTableBody">
+                            <!-- Content will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Grand Prix Tab -->
+            <div id="grand-prix" class="tab-content">
+                <h2>Grand Prix Strategy</h2>
+                <p>Best character-kart combinations for each engine class.</p>
+                
+                <div class="cc-tabs">
+                    <button class="cc-tab active" data-cc="50cc">50cc</button>
+                    <button class="cc-tab" data-cc="100cc">100cc</button>
+                    <button class="cc-tab" data-cc="150cc">150cc</button>
+                    <button class="cc-tab" data-cc="200cc">200cc</button>
+                </div>
+
+                <div class="loadout-grid" id="grandPrixLoadouts">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Knockout Tour Tab -->
+            <div id="knockout-tour" class="tab-content">
+                <h2>Knockout Tour Strategy</h2>
+                <p>Survive the elimination race across six checkpoints.</p>
+                
+                <div class="knockout-info">
+                    <div class="checkpoint-map">
+                        <h3>Checkpoint Map</h3>
+                        <div class="checkpoints">
+                            <div class="checkpoint">Checkpoint 1</div>
+                            <div class="checkpoint">Checkpoint 2</div>
+                            <div class="checkpoint">Checkpoint 3</div>
+                            <div class="checkpoint">Checkpoint 4</div>
+                            <div class="checkpoint">Checkpoint 5</div>
+                            <div class="checkpoint final">Final</div>
+                        </div>
+                    </div>
+                    
+                    <div class="meta-loadouts">
+                        <h3>Meta Loadouts</h3>
+                        <div id="knockoutLoadouts">
+                            <!-- Content will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Battle Tab -->
+            <div id="battle" class="tab-content">
+                <h2>Battle Mode Strategy</h2>
+                <p>Dominate in Balloon Battle and Coin Runners.</p>
+                
+                <div class="battle-modes">
+                    <div class="battle-mode">
+                        <h3>Balloon Battle</h3>
+                        <div class="battle-tips">
+                            <ul>
+                                <li>Stay on the move constantly</li>
+                                <li>Use items defensively</li>
+                                <li>Control the center when safe</li>
+                                <li>Know your arena layout</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="battle-mode">
+                        <h3>Coin Runners</h3>
+                        <div class="battle-tips">
+                            <ul>
+                                <li>Focus on coin collection</li>
+                                <li>Use quick turns and hop drifting</li>
+                                <li>Utilize glider ramps strategically</li>
+                                <li>Coordinate with teammates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Free Roam Tab -->
+            <div id="free-roam" class="tab-content">
+                <h2>Free Roam Challenges</h2>
+                <p>Complete missions and collect all hidden items.</p>
+                
+                <div class="collectibles-grid">
+                    <div class="collectible-type">
+                        <h3>⚑ P Switches</h3>
+                        <p>394 total - Trigger missions for stickers</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0 / 394</span>
+                    </div>
+                    
+                    <div class="collectible-type">
+                        <h3>🏅 Peach Medallions</h3>
+                        <p>150 total - Hidden collectibles</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0 / 150</span>
+                    </div>
+                    
+                    <div class="collectible-type">
+                        <h3>❓ Question Panels</h3>
+                        <p>Course-specific collectibles</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0 / 150</span>
+                    </div>
+                    
+                    <div class="collectible-type">
+                        <h3>🍽️ Yoshi's Diners</h3>
+                        <p>Dash Meals for outfit unlocks</p>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0 / 30</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script type="application/json" id="gameData">
+    {
+        "characters": [
+            {
+                "id": "mario",
+                "name": "Mario",
+                "unlock": "Available from start",
+                "rarity": "common",
+                "stats": { "speed": 2.0, "acceleration": 2.0, "weight": 1.8, "handling": 2.0 }
+            },
+            {
+                "id": "luigi",
+                "name": "Luigi",
+                "unlock": "Available from start",
+                "rarity": "common",
+                "stats": { "speed": 1.8, "acceleration": 2.2, "weight": 1.6, "handling": 2.2 }
+            },
+            {
+                "id": "peach",
+                "name": "Princess Peach",
+                "unlock": "Available from start",
+                "rarity": "common",
+                "stats": { "speed": 1.6, "acceleration": 2.4, "weight": 1.4, "handling": 2.4 }
+            },
+            {
+                "id": "bowser",
+                "name": "Bowser",
+                "unlock": "Available from start",
+                "rarity": "common",
+                "stats": { "speed": 3.2, "acceleration": 0.8, "weight": 3.0, "handling": 1.0 }
+            },
+            {
+                "id": "yoshi",
+                "name": "Yoshi",
+                "unlock": "Available from start",
+                "rarity": "common",
+                "stats": { "speed": 1.8, "acceleration": 2.2, "weight": 1.6, "handling": 2.2 }
+            },
+            {
+                "id": "toad",
+                "name": "Toad",
+                "unlock": "Available from start",
+                "rarity": "common",
+                "stats": { "speed": 1.4, "acceleration": 2.6, "weight": 1.2, "handling": 2.6 }
+            },
+            {
+                "id": "toadette",
+                "name": "Toadette",
+                "unlock": "Complete Mushroom Cup",
+                "rarity": "common",
+                "stats": { "speed": 1.4, "acceleration": 2.6, "weight": 1.2, "handling": 2.6 }
+            },
+            {
+                "id": "koopa",
+                "name": "Koopa Troopa",
+                "unlock": "Complete Flower Cup",
+                "rarity": "common",
+                "stats": { "speed": 1.6, "acceleration": 2.4, "weight": 1.4, "handling": 2.4 }
+            },
+            {
+                "id": "rosalina",
+                "name": "Rosalina",
+                "unlock": "Complete Star Cup",
+                "rarity": "special",
+                "stats": { "speed": 2.8, "acceleration": 1.2, "weight": 2.4, "handling": 1.6 }
+            },
+            {
+                "id": "king-boo",
+                "name": "King Boo",
+                "unlock": "Win 1st place in Knockout Tour",
+                "rarity": "special",
+                "stats": { "speed": 2.6, "acceleration": 1.4, "weight": 2.2, "handling": 1.8 }
+            },
+            {
+                "id": "dry-bones",
+                "name": "Dry Bones",
+                "unlock": "Collect 1000 coins",
+                "rarity": "common",
+                "stats": { "speed": 1.6, "acceleration": 2.4, "weight": 1.4, "handling": 2.4 }
+            },
+            {
+                "id": "shy-guy",
+                "name": "Shy Guy",
+                "unlock": "Complete 50 P-Switch Missions",
+                "rarity": "common",
+                "stats": { "speed": 1.8, "acceleration": 2.2, "weight": 1.6, "handling": 2.2 }
+            },
+            {
+                "id": "piranha-plant",
+                "name": "Piranha Plant",
+                "unlock": "Find 25 Peach Medallions",
+                "rarity": "special",
+                "stats": { "speed": 2.4, "acceleration": 1.6, "weight": 2.0, "handling": 1.8 }
+            }
+        ],
+        "karts": [
+            {
+                "id": "standard-kart",
+                "name": "Standard Kart",
+                "type": "Kart",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "baby-blooper",
+                "name": "Baby Blooper",
+                "type": "Kart",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "charging-truck",
+                "name": "Chargin' Truck",
+                "type": "Kart",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "cute-scoot",
+                "name": "Cute Scoot",
+                "type": "Bike",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "funky-dorrie",
+                "name": "Funky Dorrie",
+                "type": "All-Terrain",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "mach-rocket",
+                "name": "Mach Rocket",
+                "type": "Bike",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "plushbuggy",
+                "name": "Plushbuggy",
+                "type": "Kart",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "rally-bike",
+                "name": "Rally Bike",
+                "type": "Bike",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "rally-kart",
+                "name": "Rally Kart",
+                "type": "Kart",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "standard-bike",
+                "name": "Standard Bike",
+                "type": "Bike",
+                "unlock": "Available from start",
+                "rarity": "common"
+            },
+            {
+                "id": "b-dasher",
+                "name": "B Dasher",
+                "type": "Kart",
+                "unlock": "With Coins",
+                "rarity": "common"
+            },
+            {
+                "id": "stellar-sled",
+                "name": "Stellar Sled",
+                "type": "Kart",
+                "unlock": "With Coins",
+                "rarity": "special"
+            },
+            {
+                "id": "roadster-royale",
+                "name": "Roadster Royale",
+                "type": "Kart",
+                "unlock": "With Coins",
+                "rarity": "special"
+            },
+            {
+                "id": "reel-racer",
+                "name": "Reel Racer",
+                "type": "Kart",
+                "unlock": "With Coins",
+                "rarity": "special"
+            },
+            {
+                "id": "w-twin-chopper",
+                "name": "W-Twin Chopper",
+                "type": "Bike",
+                "unlock": "With Coins",
+                "rarity": "special"
+            }
+        ],
+        "tracks": [
+            {
+                "id": "mario-kart-stadium",
+                "name": "Mario Kart Stadium",
+                "cup": "Mushroom Cup",
+                "difficulty": "Easy",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "water-park",
+                "name": "Water Park",
+                "cup": "Mushroom Cup",
+                "difficulty": "Easy",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "sweet-sweet-canyon",
+                "name": "Sweet Sweet Canyon",
+                "cup": "Mushroom Cup",
+                "difficulty": "Easy",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "thwomp-ruins",
+                "name": "Thwomp Ruins",
+                "cup": "Mushroom Cup",
+                "difficulty": "Easy",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "mario-circuit",
+                "name": "Mario Circuit",
+                "cup": "Flower Cup",
+                "difficulty": "Easy",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "toad-harbor",
+                "name": "Toad Harbor",
+                "cup": "Flower Cup",
+                "difficulty": "Easy",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "twisted-mansion",
+                "name": "Twisted Mansion",
+                "cup": "Flower Cup",
+                "difficulty": "Medium",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "shy-guy-falls",
+                "name": "Shy Guy Falls",
+                "cup": "Flower Cup",
+                "difficulty": "Medium",
+                "unlock": "Available from start"
+            },
+            {
+                "id": "sunshine-airport",
+                "name": "Sunshine Airport",
+                "cup": "Star Cup",
+                "difficulty": "Medium",
+                "unlock": "Complete Flower Cup"
+            },
+            {
+                "id": "dolphin-shoals",
+                "name": "Dolphin Shoals",
+                "cup": "Star Cup",
+                "difficulty": "Medium",
+                "unlock": "Complete Flower Cup"
+            },
+            {
+                "id": "electrodrome",
+                "name": "Electrodrome",
+                "cup": "Star Cup",
+                "difficulty": "Hard",
+                "unlock": "Complete Flower Cup"
+            },
+            {
+                "id": "mount-wario",
+                "name": "Mount Wario",
+                "cup": "Star Cup",
+                "difficulty": "Hard",
+                "unlock": "Complete Flower Cup"
+            },
+            {
+                "id": "cloudtop-cruise",
+                "name": "Cloudtop Cruise",
+                "cup": "Special Cup",
+                "difficulty": "Hard",
+                "unlock": "Complete Star Cup"
+            },
+            {
+                "id": "bone-dry-dunes",
+                "name": "Bone-Dry Dunes",
+                "cup": "Special Cup",
+                "difficulty": "Hard",
+                "unlock": "Complete Star Cup"
+            },
+            {
+                "id": "bowsers-castle",
+                "name": "Bowser's Castle",
+                "cup": "Special Cup",
+                "difficulty": "Hard",
+                "unlock": "Complete Star Cup"
+            },
+            {
+                "id": "rainbow-road",
+                "name": "Rainbow Road",
+                "cup": "Special Cup",
+                "difficulty": "Legendary",
+                "unlock": "Complete all 7 Cups",
+                "rarity": "legendary"
+            }
+        ],
+        "collectibles": {
+            "pSwitches": {
+                "total": 394,
+                "description": "Trigger missions for stickers and rewards"
+            },
+            "peachMedallions": {
+                "total": 150,
+                "description": "Hidden collectibles that provide stickers"
+            },
+            "questionPanels": {
+                "total": 150,
+                "description": "Course-specific collectibles for stickers"
+            },
+            "yoshiDiners": {
+                "total": 30,
+                "description": "Dash Meals for outfit unlocks"
+            }
+        },
+        "gameModes": {
+            "grandPrix": {
+                "name": "Grand Prix",
+                "description": "Traditional racing across multiple tracks",
+                "ccOptions": ["50cc", "100cc", "150cc", "200cc"]
+            },
+            "knockoutTour": {
+                "name": "Knockout Tour",
+                "description": "Survival racing across six checkpoints",
+                "checkpoints": 6,
+                "elimination": "Bottom 4 racers eliminated at each checkpoint"
+            },
+            "battle": {
+                "name": "Battle",
+                "description": "Arena-based combat modes",
+                "modes": ["Balloon Battle", "Coin Runners"]
+            },
+            "freeRoam": {
+                "name": "Free Roam",
+                "description": "Explore the open world and complete missions",
+                "features": ["P-Switch Missions", "Collectible Hunting", "Photo Spots"]
+            }
+        }
+    }
+    </script>
+</body>
+</html>
+
